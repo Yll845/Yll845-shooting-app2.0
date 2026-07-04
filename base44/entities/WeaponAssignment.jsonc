@@ -1,0 +1,60 @@
+{
+  "name": "WeaponAssignment",
+  "type": "object",
+  "properties": {
+    "weapon_id": {
+      "type": "string",
+      "description": "ID e arm\u00ebs"
+    },
+    "weapon_info": {
+      "type": "string",
+      "description": "P\u00ebrshkrimi i arm\u00ebs (historik)"
+    },
+    "weapon_discipline": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Disiplinat e arm\u00ebs (historike nga Weapon.discipline)"
+    },
+    "member_id": {
+      "type": "string",
+      "description": "ID e shenj\u00ebtarit"
+    },
+    "member_name": {
+      "type": "string",
+      "description": "Emri i shenj\u00ebtarit (historik)"
+    },
+    "club_id": {
+      "type": "string",
+      "description": "ID e klubit (historik)"
+    },
+    "club_name": {
+      "type": "string",
+      "description": "Emri i klubit (historik)"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Data e fillimit t\u00eb caktimit"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Data e mbarimit t\u00eb caktimit"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Caktimi aktiv (vet\u00ebm nj\u00eb aktiv p\u00ebr shenj\u00ebtar)"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "weapon_id",
+    "member_id",
+    "start_date"
+  ]
+}

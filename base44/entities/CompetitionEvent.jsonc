@@ -1,0 +1,60 @@
+{
+  "name": "CompetitionEvent",
+  "type": "object",
+  "properties": {
+    "competition_id": {
+      "type": "string",
+      "description": "ID e gar\u00ebs"
+    },
+    "competition_name": {
+      "type": "string",
+      "description": "Emri i gar\u00ebs"
+    },
+    "discipline": {
+      "type": "string",
+      "enum": [
+        "Pushk\u00eb Ajrore 10m, serike",
+        "Pushk\u00eb Ajrore 10m, standarde",
+        "Pistolet\u00eb Ajrore 10m, standarde",
+        "Pushk\u00eb e Vog\u00ebl 50m",
+        "Pistolet\u00eb Standarde 25m",
+        "Pushk\u00eb 300m",
+        "Trap",
+        "Skeet"
+      ],
+      "description": "Disiplina"
+    },
+    "gender": {
+      "type": "string",
+      "enum": [
+        "Meshkuj",
+        "Femra"
+      ],
+      "description": "Gjinia"
+    },
+    "age_category": {
+      "type": "string",
+      "enum": [
+        "Pionier",
+        "Junior",
+        "Senior"
+      ],
+      "description": "Kategoria e mosh\u00ebs"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Aktiv",
+        "Finalizuar"
+      ],
+      "default": "Aktiv",
+      "description": "Statusi i eventit"
+    }
+  },
+  "required": [
+    "competition_id",
+    "discipline",
+    "gender",
+    "age_category"
+  ]
+}

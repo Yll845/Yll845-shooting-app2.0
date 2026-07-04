@@ -1,0 +1,26 @@
+{
+  "name": "CompetitionRelay",
+  "type": "object",
+  "properties": {
+    "competition_id": {
+      "type": "string",
+      "description": "ID e gar\u00ebs"
+    },
+    "relay_number": {
+      "type": "number",
+      "description": "Numri i nd\u00ebrrimit (1, 2, 3...)"
+    },
+    "scheduled_time": {
+      "type": "string",
+      "description": "Ora e planifikuar"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Sh\u00ebnime"
+    }
+  },
+  "required": [
+    "competition_id",
+    "relay_number"
+  ]
+}

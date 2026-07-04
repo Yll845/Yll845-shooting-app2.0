@@ -1,0 +1,78 @@
+{
+  "name": "Competition",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Emri i gar\u00ebs"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Kampionat Komb\u00ebtar",
+        "Kup\u00eb e Kosov\u00ebs",
+        "Gar\u00eb Miq\u00ebsore",
+        "Turne",
+        "Kualifikuese",
+        "Nd\u00ebrkomb\u00ebtare"
+      ],
+      "description": "Lloji i gar\u00ebs"
+    },
+    "organizer": {
+      "type": "string",
+      "description": "Organizatori"
+    },
+    "description": {
+      "type": "string",
+      "description": "P\u00ebrshkrimi"
+    },
+    "date_start": {
+      "type": "string",
+      "format": "date",
+      "description": "Data e fillimit"
+    },
+    "date_end": {
+      "type": "string",
+      "format": "date",
+      "description": "Data e mbarimit"
+    },
+    "registration_deadline": {
+      "type": "string",
+      "format": "date",
+      "description": "Afati i paraqitjes"
+    },
+    "location": {
+      "type": "string",
+      "description": "Vendi i mbajtjes"
+    },
+    "city": {
+      "type": "string",
+      "description": "Qyteti"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Planifikuar",
+        "Regjistrimi i hapur",
+        "N\u00eb zhvillim",
+        "P\u00ebrfunduar",
+        "Anuluar"
+      ],
+      "default": "Planifikuar",
+      "description": "Statusi i gar\u00ebs"
+    },
+    "is_deleted": {
+      "type": "boolean",
+      "default": false,
+      "description": "Soft delete"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Sh\u00ebnime"
+    }
+  },
+  "required": [
+    "name",
+    "date_start"
+  ]
+}

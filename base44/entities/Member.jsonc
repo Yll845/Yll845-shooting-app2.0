@@ -1,0 +1,181 @@
+{
+  "name": "Member",
+  "type": "object",
+  "properties": {
+    "first_name": {
+      "type": "string",
+      "description": "Emri"
+    },
+    "last_name": {
+      "type": "string",
+      "description": "Mbiemri"
+    },
+    "personal_number": {
+      "type": "string",
+      "description": "Numri personal"
+    },
+    "date_of_birth": {
+      "type": "string",
+      "format": "date",
+      "description": "Data e lindjes"
+    },
+    "gender": {
+      "type": "string",
+      "enum": [
+        "Mashkull",
+        "Fem\u00ebr"
+      ],
+      "description": "Gjinia"
+    },
+    "city": {
+      "type": "string",
+      "description": "Qyteti"
+    },
+    "address": {
+      "type": "string",
+      "description": "Adresa"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Numri i telefonit"
+    },
+    "email": {
+      "type": "string",
+      "description": "Email adresa"
+    },
+    "club_id": {
+      "type": "string",
+      "description": "ID e klubit aktual"
+    },
+    "club_name": {
+      "type": "string",
+      "description": "Emri i klubit aktual"
+    },
+    "registration_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Data e regjistrimit"
+    },
+    "is_shooter": {
+      "type": "boolean",
+      "default": false,
+      "description": "A \u00ebsht\u00eb shenj\u00ebtar (garues)?"
+    },
+    "shooter_category": {
+      "type": "string",
+      "enum": [
+        "Pionier",
+        "Junior",
+        "Senior"
+      ],
+      "description": "Kategoria aktuale e mosh\u00ebs (vet\u00ebm p\u00ebr shenj\u00ebtar\u00eb)"
+    },
+    "discipline": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Disiplinat e sh\u00ebnjetaris\u00eb"
+    },
+    "license_number": {
+      "type": "string",
+      "description": "Numri i licenc\u00ebs"
+    },
+    "license_valid_until": {
+      "type": "string",
+      "format": "date",
+      "description": "Data e skadimit t\u00eb licenc\u00ebs"
+    },
+    "issf_id": {
+      "type": "string",
+      "description": "ID n\u00eb sistemin nd\u00ebrkomb\u00ebtar ISSF (opsionale)"
+    },
+    "is_minor": {
+      "type": "boolean",
+      "default": false,
+      "description": "A \u00ebsht\u00eb i mitur?"
+    },
+    "guardian_name": {
+      "type": "string",
+      "description": "Emri i kujdestarit ligjor (p\u00ebr t\u00eb mitur)"
+    },
+    "guardian_phone": {
+      "type": "string",
+      "description": "Telefoni i kujdestarit (p\u00ebr t\u00eb mitur)"
+    },
+    "club_roles": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "Kryetar",
+          "N\u00ebnkryetar",
+          "Sekretar",
+          "An\u00ebtar K\u00ebshillit Drejtues",
+          "An\u00ebtar Kuvendi",
+          "Trajner"
+        ]
+      },
+      "description": "Pozitat zyrtare n\u00eb klub"
+    },
+    "federation_roles": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "Kryetar",
+          "N\u00ebnkryetar",
+          "Sekretar",
+          "An\u00ebtar K\u00ebshillit Drejtues",
+          "An\u00ebtar Kuvendi",
+          "An\u00ebtar Komisioni Disiplinor",
+          "An\u00ebtar Komisioni Ankesave",
+          "Komisioner",
+          "Trajner",
+          "Refer"
+        ]
+      },
+      "description": "Pozitat zyrtare n\u00eb federat\u00eb"
+    },
+    "photo_url": {
+      "type": "string",
+      "description": "Fotoja e an\u00ebtarit"
+    },
+    "bank_name": {
+      "type": "string",
+      "description": "Emri i bank\u00ebs"
+    },
+    "iban": {
+      "type": "string",
+      "description": "Numri i llogaris\u00eb bankare (IBAN)"
+    },
+    "swift": {
+      "type": "string",
+      "description": "Numri SWIFT i bank\u00ebs"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Aktiv",
+        "Joaktiv",
+        "I pezulluar",
+        "I transferuar"
+      ],
+      "default": "Aktiv",
+      "description": "Statusi"
+    },
+    "is_deleted": {
+      "type": "boolean",
+      "default": false,
+      "description": "Soft delete"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Sh\u00ebnime"
+    }
+  },
+  "required": [
+    "first_name",
+    "last_name"
+  ]
+}

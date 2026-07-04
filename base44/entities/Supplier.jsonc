@@ -1,0 +1,54 @@
+{
+  "name": "Supplier",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Em\u00ebrtimi i plot\u00eb i furnitorit"
+    },
+    "contact_person": {
+      "type": "string",
+      "description": "Personi kontaktues"
+    },
+    "unique_id": {
+      "type": "string",
+      "description": "Numri unik i identifikimit (NUI/NF)"
+    },
+    "address": {
+      "type": "string",
+      "description": "Adresa"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Numri i telefonit"
+    },
+    "email": {
+      "type": "string",
+      "description": "Email adresa"
+    },
+    "bank_name": {
+      "type": "string",
+      "description": "Emri i bank\u00ebs"
+    },
+    "iban": {
+      "type": "string",
+      "description": "Numri i llogaris\u00eb bankare (IBAN)"
+    },
+    "swift": {
+      "type": "string",
+      "description": "Numri SWIFT i bank\u00ebs"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Sh\u00ebnime"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Aktiv"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

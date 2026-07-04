@@ -1,0 +1,20 @@
+{
+  "name": "User",
+  "type": "object",
+  "properties": {
+    "role": {
+      "type": "string",
+      "description": "Roli i p\u00ebrdoruesit n\u00eb aplikacion",
+      "enum": [
+        "super_admin",
+        "admin",
+        "competition_admin",
+        "club_user"
+      ],
+      "default": "club_user"
+    }
+  },
+  "required": [
+    "role"
+  ]
+}

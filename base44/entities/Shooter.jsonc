@@ -1,0 +1,105 @@
+{
+  "name": "Shooter",
+  "type": "object",
+  "properties": {
+    "first_name": {
+      "type": "string",
+      "description": "Emri"
+    },
+    "last_name": {
+      "type": "string",
+      "description": "Mbiemri"
+    },
+    "personal_number": {
+      "type": "string",
+      "description": "Numri personal"
+    },
+    "date_of_birth": {
+      "type": "string",
+      "format": "date",
+      "description": "Data e lindjes"
+    },
+    "gender": {
+      "type": "string",
+      "enum": [
+        "Mashkull",
+        "Fem\u00ebr"
+      ],
+      "description": "Gjinia"
+    },
+    "city": {
+      "type": "string",
+      "description": "Qyteti"
+    },
+    "address": {
+      "type": "string",
+      "description": "Adresa"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Numri i telefonit"
+    },
+    "email": {
+      "type": "string",
+      "description": "Email adresa"
+    },
+    "club_id": {
+      "type": "string",
+      "description": "ID e klubit"
+    },
+    "club_name": {
+      "type": "string",
+      "description": "Emri i klubit"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "Junior",
+        "Senior",
+        "Veteran",
+        "U18",
+        "U21"
+      ],
+      "description": "Kategoria e mosh\u00ebs"
+    },
+    "discipline": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Disiplinat (p.sh. Pushk\u00eb Ajrore 10m, Pistolet\u00eb Ajrore 10m, etj.)"
+    },
+    "license_number": {
+      "type": "string",
+      "description": "Numri i licenc\u00ebs"
+    },
+    "license_valid_until": {
+      "type": "string",
+      "format": "date",
+      "description": "Data e skadimit t\u00eb licenc\u00ebs"
+    },
+    "photo_url": {
+      "type": "string",
+      "description": "Fotoja e sportistit"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Aktiv",
+        "Joaktiv",
+        "I pezulluar",
+        "I transferuar"
+      ],
+      "default": "Aktiv",
+      "description": "Statusi"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Sh\u00ebnime"
+    }
+  },
+  "required": [
+    "first_name",
+    "last_name"
+  ]
+}

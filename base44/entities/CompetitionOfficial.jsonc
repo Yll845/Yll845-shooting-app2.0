@@ -1,0 +1,36 @@
+{
+  "name": "CompetitionOfficial",
+  "type": "object",
+  "properties": {
+    "competition_id": {
+      "type": "string",
+      "description": "ID e gar\u00ebs"
+    },
+    "member_id": {
+      "type": "string",
+      "description": "ID e personit (nga An\u00ebtar\u00ebt)"
+    },
+    "member_name": {
+      "type": "string",
+      "description": "Emri i plot\u00eb"
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "Kryesuesi i gar\u00ebs",
+        "Referi kryesor",
+        "Referi ndihm\u00ebs",
+        "Referi p\u00ebr numrim (serike)",
+        "Komisioni i Ankesave - An\u00ebtari 1",
+        "Komisioni i Ankesave - An\u00ebtari 2",
+        "Komisioni i Ankesave - An\u00ebtari 3"
+      ],
+      "description": "Funksioni n\u00eb gar\u00eb"
+    }
+  },
+  "required": [
+    "competition_id",
+    "member_id",
+    "role"
+  ]
+}

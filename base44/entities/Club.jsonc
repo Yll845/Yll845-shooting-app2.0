@@ -1,0 +1,94 @@
+{
+  "name": "Club",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Emri i klubit"
+    },
+    "city": {
+      "type": "string",
+      "description": "Qyteti / Komuna"
+    },
+    "registration_number": {
+      "type": "string",
+      "description": "Numri i regjistrimit"
+    },
+    "president_id": {
+      "type": "string",
+      "description": "ID e Kryetarit (nga An\u00ebtar\u00ebt)"
+    },
+    "president_name": {
+      "type": "string",
+      "description": "Emri i Kryetarit"
+    },
+    "vice_president_id": {
+      "type": "string",
+      "description": "ID e N\u00ebnkryetarit (nga An\u00ebtar\u00ebt)"
+    },
+    "vice_president_name": {
+      "type": "string",
+      "description": "Emri i N\u00ebnkryetarit"
+    },
+    "secretary_id": {
+      "type": "string",
+      "description": "ID e Sekretarit (nga An\u00ebtar\u00ebt)"
+    },
+    "secretary_name": {
+      "type": "string",
+      "description": "Emri i Sekretarit"
+    },
+    "coaches": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "ID-t\u00eb e trajner\u00ebve (nga An\u00ebtar\u00ebt)"
+    },
+    "coach_names": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Emrat e trajner\u00ebve"
+    },
+    "address": {
+      "type": "string",
+      "description": "Adresa"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Numri i telefonit"
+    },
+    "email": {
+      "type": "string",
+      "description": "Email adresa"
+    },
+    "founded_year": {
+      "type": "number",
+      "description": "Viti i themelimit"
+    },
+    "logo_url": {
+      "type": "string",
+      "description": "URL e logos s\u00eb klubit"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive",
+        "suspended"
+      ],
+      "default": "active",
+      "description": "Statusi i klubit"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Sh\u00ebnime"
+    }
+  },
+  "required": [
+    "name",
+    "city"
+  ]
+}

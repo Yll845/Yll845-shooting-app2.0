@@ -1,0 +1,50 @@
+{
+  "name": "AuditLog",
+  "type": "object",
+  "properties": {
+    "entity_type": {
+      "type": "string",
+      "description": "Lloji i entitetit (Competition, Result, Member...)"
+    },
+    "entity_id": {
+      "type": "string",
+      "description": "ID e entitetit"
+    },
+    "action": {
+      "type": "string",
+      "enum": [
+        "create",
+        "update",
+        "delete",
+        "publish",
+        "finalize"
+      ],
+      "description": "Veprimi"
+    },
+    "user_email": {
+      "type": "string",
+      "description": "P\u00ebrdoruesi q\u00eb e kreu veprimin"
+    },
+    "user_name": {
+      "type": "string",
+      "description": "Emri i p\u00ebrdoruesit"
+    },
+    "details": {
+      "type": "string",
+      "description": "Detaje t\u00eb ndryshimit"
+    },
+    "old_value": {
+      "type": "string",
+      "description": "Vlera e vjet\u00ebr (JSON)"
+    },
+    "new_value": {
+      "type": "string",
+      "description": "Vlera e re (JSON)"
+    }
+  },
+  "required": [
+    "entity_type",
+    "entity_id",
+    "action"
+  ]
+}

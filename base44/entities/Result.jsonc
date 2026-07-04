@@ -1,0 +1,109 @@
+{
+  "name": "Result",
+  "type": "object",
+  "properties": {
+    "competition_id": {
+      "type": "string",
+      "description": "ID e gar\u00ebs"
+    },
+    "competition_name": {
+      "type": "string",
+      "description": "Emri i gar\u00ebs"
+    },
+    "event_id": {
+      "type": "string",
+      "description": "ID e eventit"
+    },
+    "registration_id": {
+      "type": "string",
+      "description": "ID e regjistrimit (historike)"
+    },
+    "member_id": {
+      "type": "string",
+      "description": "ID e sportistit"
+    },
+    "member_name": {
+      "type": "string",
+      "description": "Emri i sportistit (historike)"
+    },
+    "club_id": {
+      "type": "string",
+      "description": "ID e klubit (historike nga regjistrimi)"
+    },
+    "club_name": {
+      "type": "string",
+      "description": "Emri i klubit (historike)"
+    },
+    "discipline": {
+      "type": "string",
+      "description": "Disiplina (historike)"
+    },
+    "gender": {
+      "type": "string",
+      "description": "Gjinia (historike)"
+    },
+    "age_category": {
+      "type": "string",
+      "description": "Kategoria e mosh\u00ebs (historike)"
+    },
+    "relay_number": {
+      "type": "number",
+      "description": "Nd\u00ebrrimi"
+    },
+    "lane_number": {
+      "type": "number",
+      "description": "Pozicioni"
+    },
+    "series_1": {
+      "type": "number"
+    },
+    "series_2": {
+      "type": "number"
+    },
+    "series_3": {
+      "type": "number"
+    },
+    "series_4": {
+      "type": "number"
+    },
+    "series_5": {
+      "type": "number"
+    },
+    "series_6": {
+      "type": "number"
+    },
+    "total_score": {
+      "type": "number",
+      "description": "Pik\u00ebt totale"
+    },
+    "inner_tens": {
+      "type": "number",
+      "description": "X-at (qendrat)"
+    },
+    "final_score": {
+      "type": "number",
+      "description": "Pik\u00ebt finale (pas finales)"
+    },
+    "rank": {
+      "type": "number",
+      "description": "Renditja"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Provizor",
+        "Final"
+      ],
+      "default": "Provizor",
+      "description": "Statusi i rezultatit"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "competition_id",
+    "event_id",
+    "member_id"
+  ]
+}

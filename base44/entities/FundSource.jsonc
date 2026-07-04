@@ -1,0 +1,47 @@
+{
+  "name": "FundSource",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Em\u00ebrtimi i burimit t\u00eb fondeve"
+    },
+    "contact_person": {
+      "type": "string",
+      "description": "Personi kontaktues"
+    },
+    "unique_id": {
+      "type": "string",
+      "description": "Numri unik i identifikimit"
+    },
+    "address": {
+      "type": "string",
+      "description": "Adresa"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Numri i telefonit"
+    },
+    "email": {
+      "type": "string",
+      "description": "Email adresa"
+    },
+    "balance": {
+      "type": "number",
+      "default": 0,
+      "description": "Gjendja aktuale e fondeve (\u20ac)"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Sh\u00ebnime"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Aktiv"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

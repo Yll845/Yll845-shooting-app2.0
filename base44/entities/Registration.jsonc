@@ -1,0 +1,70 @@
+{
+  "name": "Registration",
+  "type": "object",
+  "properties": {
+    "competition_id": {
+      "type": "string"
+    },
+    "competition_name": {
+      "type": "string"
+    },
+    "event_id": {
+      "type": "string"
+    },
+    "member_id": {
+      "type": "string"
+    },
+    "member_name": {
+      "type": "string"
+    },
+    "club_id": {
+      "type": "string",
+      "description": "Klubi historik n\u00eb momentin e regjistrimit"
+    },
+    "club_name": {
+      "type": "string"
+    },
+    "discipline": {
+      "type": "string",
+      "description": "Disiplina historike"
+    },
+    "gender": {
+      "type": "string"
+    },
+    "age_category": {
+      "type": "string"
+    },
+    "weapon_id": {
+      "type": "string",
+      "description": "Arma aktive n\u00eb momentin e regjistrimit (historike)"
+    },
+    "weapon_info": {
+      "type": "string",
+      "description": "P\u00ebrshkrimi i arm\u00ebs historike"
+    },
+    "relay_id": {
+      "type": "string"
+    },
+    "relay_number": {
+      "type": "number"
+    },
+    "lane_number": {
+      "type": "number"
+    },
+    "attendance_status": {
+      "type": "string",
+      "enum": [
+        "Regjistruar",
+        "Prezent",
+        "Mungon"
+      ],
+      "default": "Regjistruar"
+    }
+  },
+  "required": [
+    "competition_id",
+    "event_id",
+    "member_id",
+    "club_id"
+  ]
+}

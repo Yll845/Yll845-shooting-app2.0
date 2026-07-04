@@ -1,0 +1,74 @@
+{
+  "name": "AthleteLicense",
+  "type": "object",
+  "properties": {
+    "member_id": {
+      "type": "string",
+      "description": "ID e shenj\u00ebtarit"
+    },
+    "member_name": {
+      "type": "string",
+      "description": "Emri i shenj\u00ebtarit"
+    },
+    "club_id": {
+      "type": "string",
+      "description": "ID e klubit licencues"
+    },
+    "club_name": {
+      "type": "string",
+      "description": "Emri i klubit licencues"
+    },
+    "discipline": {
+      "type": "string",
+      "description": "Disiplina e licencuar"
+    },
+    "valid_from": {
+      "type": "string",
+      "format": "date",
+      "description": "Valide nga"
+    },
+    "valid_to": {
+      "type": "string",
+      "format": "date",
+      "description": "Valide deri"
+    },
+    "fee_paid": {
+      "type": "boolean",
+      "default": false,
+      "description": "Tarifa e paguar"
+    },
+    "payment_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Data e pages\u00ebs"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Aktive",
+        "Skaduar",
+        "I pezulluar"
+      ],
+      "default": "Aktive",
+      "description": "Statusi i licenc\u00ebs"
+    },
+    "season": {
+      "type": "string",
+      "description": "Sezoni (p.sh. 2026)"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "registered_by": {
+      "type": "string",
+      "description": "Regjistruar nga (email i zyrtarit)"
+    }
+  },
+  "required": [
+    "member_id",
+    "club_id",
+    "discipline",
+    "valid_from",
+    "valid_to"
+  ]
+}

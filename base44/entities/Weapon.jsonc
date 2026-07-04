@@ -1,0 +1,102 @@
+{
+  "name": "Weapon",
+  "type": "object",
+  "properties": {
+    "inventory_code": {
+      "type": "string",
+      "description": "Kodi i brendsh\u00ebm i inventarit"
+    },
+    "weapon_type": {
+      "type": "string",
+      "enum": [
+        "Pushk\u00eb Ajrore",
+        "Pistolet\u00eb Ajrore",
+        "Pushk\u00eb e Vog\u00ebl",
+        "Pistolet\u00eb Standarde",
+        "Pushk\u00eb 300m",
+        "Shotgun"
+      ],
+      "description": "Lloji i arm\u00ebs"
+    },
+    "discipline": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "Pushk\u00eb Ajrore 10m, serike",
+          "Pushk\u00eb Ajrore 10m, standarde",
+          "Pistolet\u00eb Ajrore 10m, standarde",
+          "Pushk\u00eb e Vog\u00ebl 50m",
+          "Pistolet\u00eb Standarde 25m",
+          "Pushk\u00eb 300m",
+          "Trap",
+          "Skeet"
+        ]
+      },
+      "description": "Disiplinat p\u00ebr t\u00eb cilat p\u00ebrdoret kjo arm\u00eb (mund t\u00eb jet\u00eb m\u00eb shum\u00eb se nj\u00eb)"
+    },
+    "brand": {
+      "type": "string",
+      "description": "Marka"
+    },
+    "model": {
+      "type": "string",
+      "description": "Modeli"
+    },
+    "caliber": {
+      "type": "string",
+      "description": "Kalibri"
+    },
+    "serial_number": {
+      "type": "string",
+      "description": "Numri serik"
+    },
+    "ownership_type": {
+      "type": "string",
+      "enum": [
+        "Klub",
+        "Federat\u00eb",
+        "Personale"
+      ],
+      "description": "Pron\u00ebsia"
+    },
+    "owner_club_id": {
+      "type": "string",
+      "description": "ID e klubit pronar"
+    },
+    "owner_club_name": {
+      "type": "string",
+      "description": "Emri i klubit pronar"
+    },
+    "owner_member_id": {
+      "type": "string",
+      "description": "ID e personit pronar"
+    },
+    "owner_member_name": {
+      "type": "string",
+      "description": "Emri i personit pronar"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Aktive",
+        "Joaktive",
+        "E d\u00ebmtuar",
+        "E hequr nga p\u00ebrdorimi"
+      ],
+      "default": "Aktive",
+      "description": "Statusi i arm\u00ebs"
+    },
+    "is_deleted": {
+      "type": "boolean",
+      "default": false
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "weapon_type",
+    "serial_number"
+  ]
+}
