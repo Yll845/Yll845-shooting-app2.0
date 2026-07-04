@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FSHSK — Platforma Dixhitale</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',Arial,sans-serif; }
+body { background:#fff; color:#0f1c3d; }
+
+.print-btn {
+  position:fixed; top:20px; right:20px; z-index:9999;
+  background:#1a2744; color:#f8d84a; padding:13px 26px;
+  border-radius:8px; font-weight:700; font-size:14px;
+  border:none; cursor:pointer; box-shadow:0 4px 16px rgba(0,0,0,0.35);
+  transition:background 0.2s;
+}
+.print-btn:hover { background:#0f1c3d; }
+
+@media print {
+  .print-btn { display:none !important; }
+  .page { page-break-after:always; break-after:page; }
+  * { -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; }
+  body { margin:0; }
+}
+
+/* ══ PAGE 1: COVER ══ */
+.cover {
+  min-height:100vh;
+  background:linear-gradient(135deg,#0c1830 0%,#1a2e5a 55%,#0c1830 100%);
+  display:flex; flex-direction:column;
+  justify-content:center; align-items:center;
+  padding:80px 60px; text-align:center; position:relative; overflow:hidden;
+}
+.cover-circle1 {
+  position:absolute; top:-140px; right:-140px;
+  width:560px; height:560px; border-radius:50%;
+  border:1px solid rgba(248,216,74,0.1);
+  background:rgba(248,216,74,0.04);
+}
+.cover-circle2 {
+  position:absolute; bottom:-180px; left:-180px;
+  width:660px; height:660px; border-radius:50%;
+  border:1px solid rgba(248,216,74,0.07);
+  background:rgba(248,216,74,0.02);
+}
+.cover-icon {
+  width:110px; height:110px; border-radius:50%;
+  background:rgba(248,216,74,0.15); border:3px solid #f8d84a;
+  display:flex; align-items:center; justify-content:center;
+  font-size:54px; margin:0 auto 36px; position:relative; z-index:1;
+}
+.cover-tag {
+  color:#f8d84a; font-size:12px; font-weight:700;
+  letter-spacing:4px; text-transform:uppercase;
+  margin-bottom:16px; position:relative; z-index:1;
+}
+.cover h1 {
+  color:#fff; font-size:54px; font-weight:800;
+  line-height:1.1; margin-bottom:22px; position:relative; z-index:1;
+}
+.cover h1 span { color:#f8d84a; }
+.cover-sub {
+  color:rgba(255,255,255,0.72); font-size:19px; line-height:1.65;
+  margin-bottom:52px; position:relative; z-index:1;
+}
+.cover-sub strong { color:#fff; }
+.stats {
+  display:flex; gap:18px; justify-content:center;
+  flex-wrap:wrap; margin-bottom:52px; position:relative; z-index:1;
+}
+.stat-box {
+  background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.13);
+  border-radius:14px; padding:20px 32px; text-align:center; min-width:120px;
+}
+.stat-num { color:#f8d84a; font-size:36px; font-weight:800; }
+.stat-lbl { color:rgba(255,255,255,0.6); font-size:12px; margin-top:4px; }
+.cover-footer {
+  border-top:1px solid rgba(255,255,255,0.1); padding-top:28px;
+  color:rgba(255,255,255,0.5); font-size:14px; position:relative; z-index:1;
+}
+.cover-footer strong { color:#fff; }
+
+/* ══ SHARED ══ */
+.section { padding:60px; }
+.bg-gray { background:#f5f7fc; }
+.bg-white { background:#fff; }
+.sc-tag {
+  color:#1a2744; font-size:11px; font-weight:700;
+  letter-spacing:3px; text-transform:uppercase; margin-bottom:10px;
+}
+.sc-title { font-size:36px; font-weight:800; margin-bottom:8px; }
+.sc-sub { color:#64748b; font-size:16px; margin-bottom:40px; }
+.center { text-align:center; }
+
+/* ══ PROBLEM / SOLUTION ══ */
+.problem-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:48px; }
+.problem-row {
+  background:#fff; border-radius:10px; padding:16px 18px;
+  display:flex; gap:12px; align-items:flex-start;
+  box-shadow:0 1px 5px rgba(0,0,0,0.07);
+}
+.pr-label-bad  { color:#ef4444; font-size:11px; font-weight:700; margin-bottom:5px; }
+.pr-label-good { color:#16a34a; font-size:11px; font-weight:700; margin-bottom:5px; }
+.pr-text      { font-size:13px; color:#64748b; }
+.pr-text-good { font-size:13px; color:#0f1c3d; font-weight:500; }
+.pr-arrow { color:#cbd5e1; font-size:18px; align-self:center; flex-shrink:0; }
+
+/* ══ MODULES ══ */
+.modules-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; margin-bottom:44px; }
+.mod-card {
+  background:#fff; border-radius:14px; padding:26px;
+  border:1px solid #e2e8f0; box-shadow:0 2px 8px rgba(0,0,0,0.05);
+}
+.mod-icon { font-size:32px; margin-bottom:12px; }
+.mod-title { font-size:17px; font-weight:700; margin-bottom:8px; }
+.mod-desc  { color:#64748b; font-size:13px; line-height:1.6; margin-bottom:14px; }
+.mod-feat  { display:flex; align-items:center; gap:8px; font-size:12px; color:#374151; margin-bottom:6px; }
+.feat-chk  {
+  width:16px; height:16px; border-radius:50%; background:#dcfce7; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  font-size:9px; color:#16a34a; font-weight:800;
+}
+
+/* ══ DARK BOX ══ */
+.dark-box { background:#0f1c3d; border-radius:16px; padding:36px 40px; }
+.dark-box h3 { color:#f8d84a; font-size:20px; font-weight:700; text-align:center; margin-bottom:24px; }
+.ben-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; }
+.ben-item { display:flex; align-items:center; gap:10px; color:rgba(255,255,255,0.85); font-size:14px; }
+
+/* ══ MOCKUPS ══ */
+.mockup-grid { display:grid; grid-template-columns:1fr 1fr; gap:32px; margin-bottom:40px; }
+.mock-head { display:flex; align-items:center; gap:10px; margin-bottom:12px; }
+.mock-icon-box {
+  width:38px; height:38px; border-radius:8px; background:#1a2744;
+  display:flex; align-items:center; justify-content:center; font-size:19px; flex-shrink:0;
+}
+.mock-title    { font-weight:700; font-size:15px; }
+.mock-subtitle { color:#64748b; font-size:12px; }
+.browser {
+  border-radius:10px; overflow:hidden;
+  border:1px solid #e2e8f0;
+  box-shadow:0 8px 24px rgba(0,0,0,0.1);
+}
+.browser-bar {
+  background:#1a2744; padding:8px 12px;
+  display:flex; gap:5px; align-items:center;
+}
+.dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+.dot-r{background:#ff5f57;} .dot-y{background:#febc2e;} .dot-g{background:#28c840;}
+.browser-body { background:#f8f9fc; padding:20px; }
+
+.mock-row {
+  display:flex; align-items:center; gap:10px; padding:10px 14px;
+  background:#fff; border-bottom:1px solid #f1f5f9;
+}
+.mock-row:last-child { border-bottom:none; }
+.avatar {
+  width:30px; height:30px; border-radius:50%; background:#1a2744; color:#f8d84a;
+  display:flex; align-items:center; justify-content:center;
+  font-size:10px; font-weight:700; flex-shrink:0;
+}
+.mock-info { flex:1; }
+.mock-name { font-weight:600; font-size:13px; }
+.mock-club { color:#94a3b8; font-size:11px; }
+.badge { font-size:10px; padding:3px 8px; border-radius:4px; font-weight:600; }
+.b-blue  { background:#eff6ff; color:#3b4f8a; }
+.b-green { background:#dcfce7; color:#16a34a; }
+.b-red   { background:#fee2e2; color:#dc2626; }
+.b-gray  { background:#f1f5f9; color:#475569; }
+
+.fin-grid2 { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:14px; }
+.fin-card { background:#fff; border:1px solid #e2e8f0; border-radius:8px; padding:10px 12px; }
+.fin-lbl { color:#64748b; font-size:10px; margin-bottom:4px; }
+.fin-val { font-weight:700; font-size:16px; }
+.f-green{color:#16a34a;} .f-red{color:#dc2626;} .f-dark{color:#0f1c3d;}
+
+.weap-grid2 { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.weap-card { background:#fff; border-radius:8px; border:1px solid #e2e8f0; padding:14px; }
+.weap-badges { display:flex; gap:5px; margin-bottom:8px; flex-wrap:wrap; }
+.weap-name { font-weight:700; font-size:13px; }
+.weap-sn   { color:#94a3b8; font-size:11px; margin-top:2px; }
+.weap-actions { display:flex; gap:6px; margin-top:10px; }
+.weap-btn { border:1px solid #e2e8f0; border-radius:5px; padding:4px 10px; font-size:10px; font-weight:500; }
+
+.comp-card { background:#fff; border-radius:8px; border:1px solid #e2e8f0; padding:12px 14px; margin-bottom:8px; }
+.comp-inner { display:flex; justify-content:space-between; align-items:flex-start; }
+.comp-name { font-weight:600; font-size:13px; }
+.comp-meta { color:#94a3b8; font-size:11px; margin-top:2px; }
+
+.row-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; }
+.btn-dark { background:#1a2744; color:#f8d84a; padding:6px 14px; border-radius:6px; font-size:11px; font-weight:600; }
+.export-bar { background:#1a2744; color:#f8d84a; text-align:center; padding:9px; border-radius:6px; font-size:11px; font-weight:600; margin-top:6px; }
+
+/* ══ OFFER PAGE ══ */
+.offer-grid { display:grid; grid-template-columns:1fr 1fr; gap:32px; margin-bottom:40px; }
+.price-box { background:#0f1c3d; border-radius:16px; padding:36px; color:#fff; text-align:center; }
+.price-title { color:#f8d84a; font-weight:700; font-size:18px; margin-bottom:8px; }
+.price-sub   { color:rgba(255,255,255,0.6); font-size:14px; margin-bottom:30px; }
+.price-feats { border-top:1px solid rgba(255,255,255,0.1); padding-top:22px; margin-bottom:22px; }
+.price-feat  { color:rgba(255,255,255,0.85); font-size:14px; padding:7px 0; border-bottom:1px solid rgba(255,255,255,0.06); text-align:left; }
+.price-feat:last-child { border-bottom:none; }
+.price-cta   { background:#f8d84a; color:#0f1c3d; border-radius:10px; padding:18px 24px; }
+.price-lbl   { font-size:12px; font-weight:700; margin-bottom:4px; }
+.price-num   { font-size:28px; font-weight:800; }
+.price-note  { font-size:11px; opacity:0.65; margin-top:4px; }
+
+.tl-title { font-weight:700; font-size:20px; margin-bottom:24px; }
+.tl-item  { display:flex; gap:16px; margin-bottom:20px; }
+.tl-week  { width:90px; flex-shrink:0; text-align:right; }
+.tl-badge { color:#fff; border-radius:6px; padding:4px 8px; font-size:11px; font-weight:600; display:inline-block; }
+.tl-body  { border-left:3px solid; padding-left:16px; padding-bottom:14px; }
+.tl-name  { font-weight:600; font-size:14px; }
+.tl-desc  { color:#64748b; font-size:13px; margin-top:2px; }
+
+.cta-box { background:linear-gradient(135deg,#1a2744,#0f3060); border-radius:16px; padding:44px; text-align:center; color:#fff; }
+.cta-box h3 { font-size:26px; font-weight:800; margin-bottom:10px; }
+.cta-sub { color:rgba(255,255,255,0.7); font-size:15px; margin-bottom:24px; }
+.cta-contact { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; max-width:580px; margin:0 auto; }
+.contact-card { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:16px; }
+.contact-lbl { color:#f8d84a; font-weight:600; font-size:12px; margin-bottom:8px; }
+.contact-val { color:rgba(255,255,255,0.45); font-size:13px; }
+</style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">🖨️ Printo / Ruaj si PDF</button>
+
+<!-- ══════ FAQJA 1: KOPERTINË ══════ -->
+<div class="page">
+<div class="cover">
+  <div class="cover-circle1"></div>
+  <div class="cover-circle2"></div>
+  <div class="cover-icon">🎯</div>
+  <div class="cover-tag">OFERTË PROFESIONALE — MAJ 2026</div>
+  <h1>Sistemi Dixhital i<br><span>Shenjëtarisë Sportive</span></h1>
+  <p class="cover-sub">
+    Platforma e menaxhimit të plotë për<br>
+    <strong>Federatën e Shenjëtarisë Sportive të Kosovës</strong>
+  </p>
+  <div class="stats">
+    <div class="stat-box"><div class="stat-num">56+</div><div class="stat-lbl">Anëtarë aktualë</div></div>
+    <div class="stat-box"><div class="stat-num">10</div><div class="stat-lbl">Klube aktive</div></div>
+    <div class="stat-box"><div class="stat-num">6</div><div class="stat-lbl">Module funksionale</div></div>
+    <div class="stat-box"><div class="stat-num">100%</div><div class="stat-lbl">Cloud &amp; dixhital</div></div>
+  </div>
+  <div class="cover-footer">
+    Drejtuar: <strong>Z. Gëzim Hazrolli, Kryetar — FSHSK</strong> &nbsp;|&nbsp; Maj 2026
+  </div>
+</div>
+</div>
+
+<!-- ══════ FAQJA 2: PROBLEMI / ZGJIDHJA + MODULET ══════ -->
+<div class="page">
+<div class="section bg-gray">
+  <div class="center">
+    <div class="sc-tag">ÇFARË ZGJIDHIM</div>
+    <div class="sc-title">Problemi i Sotëm → Zgjidhja</div>
+    <p class="sc-sub">Nga kaosi i Excel-it dhe letrës — tek sistemi profesional dixhital</p>
+  </div>
+  <div class="problem-grid">
+    <div class="problem-row">
+      <div><div class="pr-label-bad">✕ TANI</div><div class="pr-text">Regjistrat me letër / Excel të shpërndarë</div></div>
+      <div class="pr-arrow">→</div>
+      <div><div class="pr-label-good">✓ ME SISTEMIN</div><div class="pr-text-good">Gjithçka e centralizuar dixhitalisht</div></div>
+    </div>
+    <div class="problem-row">
+      <div><div class="pr-label-bad">✕ TANI</div><div class="pr-text">Të dhënat humbasin ose ngatërrohen</div></div>
+      <div class="pr-arrow">→</div>
+      <div><div class="pr-label-good">✓ ME SISTEMIN</div><div class="pr-text-good">Cloud — nuk humbasin kurrë</div></div>
+    </div>
+    <div class="problem-row">
+      <div><div class="pr-label-bad">✕ TANI</div><div class="pr-text">Garat organizohen me email/WhatsApp</div></div>
+      <div class="pr-arrow">→</div>
+      <div><div class="pr-label-good">✓ ME SISTEMIN</div><div class="pr-text-good">Magjistar automatik i garave</div></div>
+    </div>
+    <div class="problem-row">
+      <div><div class="pr-label-bad">✕ TANI</div><div class="pr-text">Financat pa kontroll dhe transparencë</div></div>
+      <div class="pr-arrow">→</div>
+      <div><div class="pr-label-good">✓ ME SISTEMIN</div><div class="pr-text-good">Raporte të plota financiare në çast</div></div>
+    </div>
+    <div class="problem-row">
+      <div><div class="pr-label-bad">✕ TANI</div><div class="pr-text">Licencat skadojnë pa u vënë re</div></div>
+      <div class="pr-arrow">→</div>
+      <div><div class="pr-label-good">✓ ME SISTEMIN</div><div class="pr-text-good">Ndjekje automatike e skadimeve</div></div>
+    </div>
+    <div class="problem-row">
+      <div><div class="pr-label-bad">✕ TANI</div><div class="pr-text">Nuk ka historik të sportistëve</div></div>
+      <div class="pr-arrow">→</div>
+      <div><div class="pr-label-good">✓ ME SISTEMIN</div><div class="pr-text-good">Profil i plotë me një klik</div></div>
+    </div>
+  </div>
+
+  <div class="center">
+    <div class="sc-tag">MODULET</div>
+    <div class="sc-title">6 Module të Integruara</div>
+  </div>
+  <div class="modules-grid">
+    <div class="mod-card">
+      <div class="mod-icon">👥</div>
+      <div class="mod-title">Anëtarët</div>
+      <div class="mod-desc">Profil i plotë — foto, klub, role, licencë dhe historik transfertash.</div>
+      <div class="mod-feat"><div class="feat-chk">✓</div>Importim nga Excel</div>
+      <div class="mod-feat"><div class="feat-chk">✓</div>Filtrim sipas rolit / klubit</div>
+      <div class="mod-feat"><div class="feat-chk">✓</div>Profile individuale të plota</div>
+    </div>
+    <div class="mod-card">
+      <div class="mod-icon">🎯</div>
+      <div class="mod-title">Garat</div>
+      <div class="mod-desc">Magjistar hap-pas-hapi, caktim automatik ndërrimesh dhe pozicioneve.</div>
+      <div class="mod-feat"><div class="feat-chk">✓</div>Magjistar krijimi</div>
+      <div class="mod-feat"><div class="feat-chk">✓</div>Caktim automatik pozicionesh</div>
+      <div class="mod-feat"><div class="feat-chk">✓</div>Printim startlistash</div>
+    </div>
+    <div class="mod-card">
+      <div class="mod-icon">📄</div>
+      <div class="mod-title">Licencat</div>
+      <div class="mod-desc">Licenca për klube dhe sportistë, ndjekje skadimesh, konfirmim pagesash.</div>
+      <div class="mod-feat"><div class="feat-chk">✓</div>Licenca sportistësh &amp; klubesh</div>
+      <div class="mod-feat"><div class="feat-chk">✓</div>Ndjekje automatike skadimesh</div>
+      <div class="mod-feat"><div class="feat-chk">✓</div>Raporte sezoni</div>
+    </div>
+    <div class="mod-card">
+      <div class="mod-icon">💶</div>
+      <div class="mod-title">Financat</div>
+      <div class="mod-desc">Fatura dhe pagesa hyrëse/dalëse, gjendja bankare, raporte Excel.</div>
+      <div class="mod-feat"><div class="feat-chk">✓</div>Fatura hyrëse/dalëse</div>
+      <div class="mod-feat"><div class="feat-chk">✓</div>Gjendja bankare live</div>
+      <div class="mod-feat"><div class="feat-chk">✓</div>Eksportim Excel i filtruar</div>
+    </div>
+    <div class="mod-card">
+      <div class="mod-icon">🔫</div>
+      <div class="mod-title">Armët</div>
+      <div class="mod-desc">Inventar i plotë, caktim tek sportistët, historiku dhe statusi.</div>
+      <div class="mod-feat"><div class="feat-chk">✓</div>Inventar i plotë</div>
+      <div class="mod-feat"><div class="feat-chk">✓</div>Caktim tek sportistë</div>
+      <div class="mod-feat"><div class="feat-chk">✓</div>Gjurmim statusi i çdo arme</div>
+    </div>
+    <div class="mod-card">
+      <div class="mod-icon">🏆</div>
+      <div class="mod-title">Rezultatet</div>
+      <div class="mod-desc">Regjistrim dhe publikim rezultatesh, statistika historike ndër sezone.</div>
+      <div class="mod-feat"><div class="feat-chk">✓</div>Regjistrim seriesh</div>
+      <div class="mod-feat"><div class="feat-chk">✓</div>Renditje automatike</div>
+      <div class="mod-feat"><div class="feat-chk">✓</div>Statistika historike</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════ FAQJA 3: PAMJET E NDËRFAQES ══════ -->
+<div class="page">
+<div class="section bg-white">
+  <div class="center">
+    <div class="sc-tag">PAMJET E VËRTETA</div>
+    <div class="sc-title">Ndërfaqja e Sistemit</div>
+    <p class="sc-sub">Mock-up i saktë i moduleve kryesore sipas ndërfaqes reale</p>
+  </div>
+
+  <div class="mockup-grid">
+    <!-- Members -->
+    <div>
+      <div class="mock-head">
+        <div class="mock-icon-box">👥</div>
+        <div><div class="mock-title">Anëtarët</div><div class="mock-subtitle">Menaxhim i plotë i regjistrave</div></div>
+      </div>
+      <div class="browser">
+        <div class="browser-bar"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div>
+        <div class="browser-body">
+          <div class="row-head">
+            <div>
+              <div style="font-weight:800;font-size:20px;color:#0f1c3d">Anëtarët</div>
+              <div style="color:#64748b;font-size:12px">56 anëtarë të regjistruar</div>
+            </div>
+            <div class="btn-dark">+ Shto Anëtar</div>
+          </div>
+          <div style="border:1px solid #e2e8f0;border-radius:8px;overflow:hidden">
+            <div class="mock-row"><div class="avatar">SI</div><div class="mock-info"><div class="mock-name">Shefqet Ismajli</div><div class="mock-club">Dardania</div></div><span class="badge b-blue">Zyrtar Klubi</span>&nbsp;<span class="badge b-green">Aktiv</span></div>
+            <div class="mock-row"><div class="avatar">AH</div><div class="mock-info"><div class="mock-name">Afrim Hajdari</div><div class="mock-club">Zenel Hajdini</div></div><span class="badge b-blue">Shenjëtar</span>&nbsp;<span class="badge b-green">Aktiv</span></div>
+            <div class="mock-row"><div class="avatar">BI</div><div class="mock-info"><div class="mock-name">Betim Ismajli</div><div class="mock-club">Hajvalia</div></div><span class="badge b-blue">Zyrtar Fed.</span>&nbsp;<span class="badge b-green">Aktiv</span></div>
+            <div class="mock-row"><div class="avatar">AR</div><div class="mock-info"><div class="mock-name">Arben Rrustemi</div><div class="mock-club">Policia e Kosovës</div></div><span class="badge b-blue">Shenjëtar</span>&nbsp;<span class="badge b-green">Aktiv</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Finance -->
+    <div>
+      <div class="mock-head">
+        <div class="mock-icon-box">💶</div>
+        <div><div class="mock-title">Financat</div><div class="mock-subtitle">Kontroll i plotë financiar</div></div>
+      </div>
+      <div class="browser">
+        <div class="browser-bar"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div>
+        <div class="browser-body">
+          <div style="font-weight:800;font-size:20px;color:#0f1c3d;margin-bottom:4px">Financat</div>
+          <div style="color:#64748b;font-size:12px;margin-bottom:14px">Fatura dhe pagesa hyrëse/dalëse</div>
+          <div class="fin-grid2">
+            <div class="fin-card"><div class="fin-lbl">Pagesa Hyrëse</div><div class="fin-val f-green">€30,200</div></div>
+            <div class="fin-card"><div class="fin-lbl">Pagesa Dalëse</div><div class="fin-val f-red">€160</div></div>
+            <div class="fin-card"><div class="fin-lbl">Arka</div><div class="fin-val f-dark">€500</div></div>
+            <div class="fin-card"><div class="fin-lbl">NLB Banka</div><div class="fin-val f-dark">€45,182</div></div>
+          </div>
+          <div class="export-bar">📊 Eksporto Raportin Excel</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Weapons -->
+    <div>
+      <div class="mock-head">
+        <div class="mock-icon-box">🔫</div>
+        <div><div class="mock-title">Armët</div><div class="mock-subtitle">Inventar dhe caktim</div></div>
+      </div>
+      <div class="browser">
+        <div class="browser-bar"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div>
+        <div class="browser-body">
+          <div class="weap-grid2">
+            <div class="weap-card">
+              <div class="weap-badges"><span class="badge b-green">Aktive</span><span class="badge b-blue">Pushkë Ajrore</span></div>
+              <div class="weap-name">Walther LG400</div>
+              <div class="weap-sn">SN: KBB9496 — Federatë</div>
+              <div class="weap-actions"><div class="weap-btn">Cakto</div><div class="weap-btn">Historia</div></div>
+            </div>
+            <div class="weap-card">
+              <div class="weap-badges"><span class="badge b-green">Aktive</span><span class="badge b-blue">Pistoletë</span></div>
+              <div class="weap-name">Walther LP500</div>
+              <div class="weap-sn">SN: KHA3054 — Federatë</div>
+              <div class="weap-actions"><div class="weap-btn">Cakto</div><div class="weap-btn">Historia</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Competitions -->
+    <div>
+      <div class="mock-head">
+        <div class="mock-icon-box">🎯</div>
+        <div><div class="mock-title">Garat</div><div class="mock-subtitle">Organizim i plotë</div></div>
+      </div>
+      <div class="browser">
+        <div class="browser-bar"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div>
+        <div class="browser-body">
+          <div class="row-head">
+            <div style="font-weight:700;color:#0f1c3d">Garat</div>
+            <div class="btn-dark">+ Krijo Garë</div>
+          </div>
+          <div class="comp-card">
+            <div class="comp-inner">
+              <div><div class="comp-name">Kampionati Kombëtar 2026</div><div class="comp-meta">📅 15 Qershor 2026 | Kampionat</div></div>
+              <span class="badge" style="background:#eff6ff;color:#3b82f6">Planifikuar</span>
+            </div>
+          </div>
+          <div class="comp-card">
+            <div class="comp-inner">
+              <div><div class="comp-name">Kupa e Kosovës 2026</div><div class="comp-meta">📅 20 Maj 2026 | Kupë</div></div>
+              <span class="badge b-green">Përfunduar</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Benefits -->
+  <div class="dark-box">
+    <h3>Përfitimet Kryesore</h3>
+    <div class="ben-grid">
+      <div class="ben-item">☁️&nbsp; Cloud — qasje nga çdo pajisje</div>
+      <div class="ben-item">🔒&nbsp; Të dhëna të sigurta — pa humbje</div>
+      <div class="ben-item">📊&nbsp; Raporte automatike Excel/PDF</div>
+      <div class="ben-item">👥&nbsp; Role të ndryshme (admin/operator)</div>
+      <div class="ben-item">⚡&nbsp; Pa instalim — hapet në shfletues</div>
+      <div class="ben-item">🔄&nbsp; Azhurnime dhe veçori të reja falas</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════ FAQJA 4: OFERTA & KONTAKTI ══════ -->
+<div class="page">
+<div class="section bg-white">
+  <div class="center">
+    <div class="sc-tag">PROPOZIMI FINANCIAR</div>
+    <div class="sc-title">Oferta &amp; Implementimi</div>
+  </div>
+
+  <div class="offer-grid">
+    <!-- Pricing -->
+    <div class="price-box">
+      <div style="font-size:50px;margin-bottom:14px">💎</div>
+      <div class="price-title">Paketa Kompleto</div>
+      <div class="price-sub">Të gjitha modulet e integruara</div>
+      <div class="price-feats">
+        <div class="price-feat">✓ &nbsp; Të gjitha 6 modulet</div>
+        <div class="price-feat">✓ &nbsp; Anëtarë të pakufizuar</div>
+        <div class="price-feat">✓ &nbsp; Hostuese dhe mirëmbajtja</div>
+        <div class="price-feat">✓ &nbsp; Azhurnime falas</div>
+        <div class="price-feat">✓ &nbsp; Trajnim i stafit</div>
+        <div class="price-feat">✓ &nbsp; Mbështetje teknike 6 muaj</div>
+      </div>
+      <div class="price-cta">
+        <div class="price-lbl">ÇMIMI VJETOR</div>
+        <div class="price-num">___________ €</div>
+        <div class="price-note">negociueshëm sipas marrëveshjes</div>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div>
+      <div class="tl-title">Plani i Implementimit</div>
+      <div class="tl-item">
+        <div class="tl-week"><span class="tl-badge" style="background:#3b82f6">Java 1</span></div>
+        <div class="tl-body" style="border-color:#3b82f6">
+          <div class="tl-name">Konfigurim &amp; Personalizim</div>
+          <div class="tl-desc">Ngritja e sistemit me logon dhe të dhënat e federatës</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-week"><span class="tl-badge" style="background:#8b5cf6">Java 2–3</span></div>
+        <div class="tl-body" style="border-color:#8b5cf6">
+          <div class="tl-name">Migrim i të Dhënave</div>
+          <div class="tl-desc">Transferim i anëtarëve, klubeve dhe historikut ekzistues</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-week"><span class="tl-badge" style="background:#f59e0b">Java 4</span></div>
+        <div class="tl-body" style="border-color:#f59e0b">
+          <div class="tl-name">Trajnim i Stafit</div>
+          <div class="tl-desc">2–3 sesione trajnimi për administratorët</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-week"><span class="tl-badge" style="background:#10b981">Muaji 2</span></div>
+        <div class="tl-body" style="border-color:#10b981">
+          <div class="tl-name">Periudha e Testimit</div>
+          <div class="tl-desc">30 ditë mbështetje intensive falas</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-week"><span class="tl-badge" style="background:#ef4444">Muaji 3+</span></div>
+        <div class="tl-body" style="border-color:#ef4444">
+          <div class="tl-name">Lançimi i Plotë</div>
+          <div class="tl-desc">Sistemi aktiv — mbështetje e vazhdueshme</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <div style="font-size:38px;margin-bottom:14px">🤝</div>
+    <h3>Gati për Demo të Drejtpërdrejtë?</h3>
+    <p class="cta-sub">Sistemi është aktiv dhe i gatshëm për t'u demonstruar në çdo kohë</p>
+    <div class="cta-contact">
+      <div class="contact-card"><div class="contact-lbl">📧 Email</div><div class="contact-val">________________</div></div>
+      <div class="contact-card"><div class="contact-lbl">📞 Telefon</div><div class="contact-val">________________</div></div>
+      <div class="contact-card"><div class="contact-lbl">📅 Takimi</div><div class="contact-val">________________</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+</body>
+</html>
